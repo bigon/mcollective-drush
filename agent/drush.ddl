@@ -6,7 +6,7 @@ metadata :name        => "drush",
          :url         => "https://github.com/roidelapluie/mcollective-drush",
          :timeout     => 600
 
-["updatedb", "cache-clear", "features-revert-all"].each do |act|
+["updatedb", "cache-clear", "features-revert-all", "php-eval"].each do |act|
     action act, :description => "Run drush #{act} over a drupal installation" do
         input :root,
               :prompt      => "Root directory",
@@ -73,6 +73,15 @@ metadata :name        => "drush",
                   :validation  => '^[a-zA-Z\-_\d]+$',
                   :optional    => false,
                   :maxlength   => 32
+        end
+        if act == "php-eval" then
+            input :type,
+                  :prompt      => "code",
+                  :description => "The particular code to evaluate.",
+                  :type        => :string,
+                  :validation  => '^[a-zA-Z\-_\d]+$',
+                  :optional    => false,
+                  :maxlength   => 255
         end
     end
 end

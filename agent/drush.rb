@@ -19,6 +19,15 @@ module MCollective
           reply.fail "FAIL"
         end
       end
+      action "features-revert-all" do
+        reply[:command] = Drush.get_drush_command("features-revert-all", request)
+        reply[:exitcode] = run(reply[:command], :stdout => :stdout, :stderr => :stderr)
+        if reply[:exitcode] == 0 then
+          reply.statusmsg = "OK"
+        else
+          reply.fail "FAIL"
+        end
+      end
       def self.get_drush_command(drush_command, request)
         command = request[:drush_path]
         if request[:yes] then

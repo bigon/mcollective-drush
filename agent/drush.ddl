@@ -6,7 +6,7 @@ metadata :name        => "drush",
          :url         => "https://github.com/roidelapluie/mcollective-drush",
          :timeout     => 600
 
-["updatedb", "cache-clear"].each do |act|
+["updatedb", "cache-clear", "features-revert-all"].each do |act|
     action act, :description => "Run drush #{act} over a drupal installation" do
         input :root,
               :prompt      => "Root directory",

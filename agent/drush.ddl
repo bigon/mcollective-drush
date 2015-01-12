@@ -20,6 +20,7 @@ metadata :name        => "drush",
               :prompt      => "Path to drush",
               :description => "Path to the drush executable.",
               :type        => :string,
+              :validation  => '^/[a-zA-Z\-_\d/.]+$',
               :default     => "/usr/bin/drush",
               :optional    => true,
               :maxlength   => 255

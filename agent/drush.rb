@@ -51,6 +51,10 @@ module MCollective
         command += " --root=#{request[:root]}"
         command += " #{drush_command}"
 
+	if request[:run_user] then
+	  command.prepend("sudo -u #{request[:run_user]} ")
+	end
+
         return command
       end
     end

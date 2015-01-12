@@ -54,6 +54,14 @@ metadata :name        => "drush",
               :default     => false,
               :optional    => true
 
+        input :run_user,
+              :prompt      => "User to use",
+              :description => "User under who drush should run.",
+              :type        => :string,
+              :validation  => '^[a-zA-Z\-_\d/.]+$',
+              :optional    => true,
+              :maxlength   => 255
+
         output :stdout,
                :description => "Output of drush.",
                :display_as  => "Message"
